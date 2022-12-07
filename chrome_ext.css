@@ -1,0 +1,146 @@
+/*
+CIS 124: Introduction to JavaScript
+Module 6: Scrimba Exercises Part 2
+Build a Chrome Extension, https://scrimba.com/playlist/pPD7Kt4
+Practice Part 3, https://scrimba.com/playlist/pQgXphg
+*/
+
+html {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+/* BODY. Tepper, 18NOV2022 */
+body {
+    font-family: Tahoma, Verdana, sans-serif;
+    margin: 0 auto;
+    padding: 10px;
+    background-color: #EDD2E0;
+    color: #2B4570;
+    border: 3px solid #E49273;
+    min-width: 400px;
+}
+
+.extras {
+    text-align: center;
+    width: 500px;
+}
+
+input {
+    width: 100%;
+    padding: 10px;
+    box-sizing: border-box;
+    border: 3px solid #2B4570;
+    margin-bottom: 4px;
+}
+
+/* BUTTON STYLES. Tepper, 06DEC2022 */
+button {
+    background: #2B4570;
+    color: #E49273;
+    padding: 10px 20px;
+    border: none;
+    font-weight: bold;
+}
+
+#button2 {
+    background: #7180AC;
+    color: #E49273;
+    padding: 10px 20px;
+    border: none;
+    font-weight: bold;
+}
+
+.button1 {
+    background: #2B4570;
+    color: #E49273;
+    padding: 10px 20px;
+    border: 3px solid #2B4570;
+    font-weight: bold;
+}
+
+.button2 {
+    background: #EDD2E0;
+    color: #2B4570;
+    padding: 10px 20px;
+    border: 3px solid #2B4570;
+    font-weight: bold;
+}
+
+#button-a {
+    text-decoration: none;
+    color: #E49273;
+}
+
+/* BOX (DIV) STYLES. Tepper, 06DEC2022 */
+#box {
+    cursor: pointer;
+    background: #7180AC;
+    padding: 40px;
+    width: 200px;
+    text-align: center;
+    margin: 20px auto;
+    color: #E49273;
+    font-weight: bold;
+}
+
+#box1 {
+    cursor: pointer;
+    background: #7180AC;
+    padding: 40px;
+    width: 200px;
+    text-align: center;
+    margin: 20px auto;
+    color: #E49273;
+    font-weight: bold;
+}
+
+#box2 {
+    cursor: pointer;
+    background: #2B4570;
+    padding: 40px;
+    width: 200px;
+    text-align: center;
+    margin: 20px auto;
+    color: #E49273;
+    font-weight: bold;
+}
+
+/* LIST STYLES. Tepper, 06DEC2022 */
+ul {
+    margin-top: 20px;
+    list-style: none;
+    padding-left: 0;
+}
+
+li {
+    margin-top: 5px;
+}
+
+li a {
+    color: #419D78;
+}
+
+/* FOOTER. Tepper, 06DEC2022 */
+footer {
+    font-family: 'Trebuchet MS', sans-serif;
+    font-display: block;
+    font-size: 20px;
+    text-align: center;
+    color: #2B4570;
+    padding: 0.5px 0;
+}
+
+/*
+FONTS: 
+
+
+COLORS:
+    Glaucous: 7180AC
+    <font> Dark Cornflower Blue: 2B4570
+    Paolo Veronese Green: 419D78
+    Dark Salmon: E49273
+    <bg> Queen Pink: EDD2E0
+*/
+
