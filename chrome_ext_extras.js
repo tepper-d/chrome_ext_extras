@@ -87,8 +87,6 @@ reindeerTagBtn.addEventListener("click", function(){
     let assignedRegion = serverRegions[v];
     console.log(assignedRegion);
 
-
-
     // Reindeer tag concat
     let reindeerTag = `${assignedReindeer}#${tagNum[1]}${tagNum[2]}${tagNum[2]}${tagNum[3]}`;
 
@@ -163,7 +161,6 @@ console.log(`random nums are: x=${x}, y=${y}, z=${z}`);
 console.log("x+y = " + add(x, y));
 console.log("x+z = " + add(x, z));
 console.log("y+z = " + add(y, z));
-
 
 /* LESSON 6. WRITE YOUR FIRST addEventListener()
     1. Grab the box from the DOM and store it in a variable
