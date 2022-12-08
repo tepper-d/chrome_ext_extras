@@ -31,7 +31,7 @@ let reindeerKey = `[]`;
 const reindeerNames = ["Dasher", "Dancer", "Prancer", "Vixen", "Comet", "Cupid", "Dunder", "Blixem", "Flossie", "Glossie", "Racer", "Pacer", "Reckless", "Speckless", "Fearless", "Peerless", "Ready", "Steady"];
 const serverRegions = ["NAE", "NAW", "EU", "OCE", "BR", "ASIA", "ME"]; // 26
 
-// RANDOMIZERS
+// RANDOMIZERS. TO BE USED ONLY WITH 43 & 44. 
 const x = Math.floor(Math.random() * reindeerNames.length); // greeting
 const y = Math.floor(Math.random() * reindeerNames.length); // new tag
 const z = Math.floor(Math.random() * serverRegions.length); // server
@@ -74,19 +74,23 @@ const tagGenerator = () => {
 reindeerTagBtn.addEventListener("click", function(){
     // Picks a random reindeer name from array
     console.log("Generating new reindeer...");
-    let assignedReindeer = reindeerNames[y];
+    let w = Math.floor(Math.random() * reindeerNames.length); // new tag
+    let assignedReindeer = reindeerNames[w];
     console.log(assignedReindeer);
-
-    // Picks random server region from array
-    console.log("Selecting optimized region");
-    let assignedRegion = serverRegions[z];
-    console.log(assignedRegion);
 
     // generates random nums for numeric tag
     tagGenerator();
 
+    // Picks random server region from array
+    console.log("Selecting optimized region");
+    let v = Math.floor(Math.random() * serverRegions.length); // server
+    let assignedRegion = serverRegions[v];
+    console.log(assignedRegion);
+
+
+
     // Reindeer tag concat
-    let reindeerTag = `${reindeerNames[reindeerRandomizer]}#${tagNum[1]}${tagNum[2]}${tagNum[2]}${tagNum[3]}`;
+    let reindeerTag = `${assignedReindeer}#${tagNum[1]}${tagNum[2]}${tagNum[2]}${tagNum[3]}`;
 
     reindeerTagH.innerHTML = `<h2>${reindeerTag}</h2>`;
     reindeerTagP.innerHTML = `<br><p>Your reindeer is ${assignedReindeer}.</p><p></p>
@@ -125,7 +129,7 @@ const archivedTagP = document.getElementById("archivedTag-p");
 archivedTagShowBtn.innerHTML = "<p></p><button id='button1'>VIEW ALL</button>";
 archivedTagClearBtn.innerHTML = "<p></p><button id='button1'>CLEAR ALL</button>";
 archivedTagH.innerHTML = `<h2>View Archived Reindeer Tags</h2>`;
-archivedTagP.innerHTML = `<p><i>Nothing to show right now. Check console.</i></p>`;
+archivedTagP.innerHTML = `<p>1. View console when generating new tags.</p><h3>OR</><p>2. Inspect > Application > Local Storage to access archive</p>`;
 
 // show all reindeers saved in localStorage
 archivedTagShowBtn.addEventListener("click", function() {
@@ -152,14 +156,14 @@ console.log("serverRegions[4] is " + get5th(serverRegions));
     Create the add() function that adds two numbers together and returns the sum
     vars x, y, z are random numbers declared on lines 35-37
 Tepper, 07DEC2022 */
-/* const add = (a,b) => {
+const add = (a,b) => {
     return a + b;
 }
 console.log(`random nums are: x=${x}, y=${y}, z=${z}`);
 console.log("x+y = " + add(x, y));
 console.log("x+z = " + add(x, z));
 console.log("y+z = " + add(y, z));
- */
+
 
 /* LESSON 6. WRITE YOUR FIRST addEventListener()
     1. Grab the box from the DOM and store it in a variable
@@ -187,7 +191,7 @@ boxEl.addEventListener("mouseover", function() {
 boxBtn.addEventListener("click", function() {
     console.log("I added this box to my cart.");
 
-    boxP.innerHTML = "Added to cart!";
+    boxP.innerHTML = "<p></p>Added to cart!";
 });
 
 
