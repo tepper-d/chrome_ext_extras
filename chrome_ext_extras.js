@@ -42,7 +42,7 @@ let newReindeer = "";
 
 reindeerTagH.innerHTML = `<h2>Generate Your Reindeer Tag</h2>`;
 reindeerTagP.textContent = `Which reindeer will you be?`;
-reindeerTagBtn.innerHTML = "<p></p><button id='button2'>GENERATE</button>";
+reindeerTagBtn.innerHTML = "<p></p><button id='button1'>GENERATE</button>";
 
 greetingEl.textContent = "Hey there, stranger..."; // default welcome greeting for 43, 44
 
@@ -126,10 +126,10 @@ const archivedTagH = document.getElementById("archivedTag-h");
 const archivedTagP = document.getElementById("archivedTag-p");
 
 // VIEW ARCHIVED REINDEER ASSIGNMENTS
-archivedTagShowBtn.innerHTML = "<p></p><button id='button1'>VIEW ALL</button>";
+archivedTagShowBtn.innerHTML = "<p></p><button id='button2'>VIEW ALL</button>";
 archivedTagClearBtn.innerHTML = "<p></p><button id='button1'>CLEAR ALL</button>";
 archivedTagH.innerHTML = `<h2>View Archived Reindeer Tags</h2>`;
-archivedTagP.innerHTML = `<p>1. View console when generating new tags.</p><h3>OR</><p>2. Inspect > Application > Local Storage to access archive</p>`;
+archivedTagP.innerHTML = `<p>1. View console when generating new tags.</p><h3>OR</h3><p>2. Inspect > Application > Local Storage to access archive</p>`;
 
 // show all reindeers saved in localStorage
 archivedTagShowBtn.addEventListener("click", function() {
@@ -137,7 +137,7 @@ archivedTagShowBtn.addEventListener("click", function() {
 });
 
 // clears localStorage
-archivedTagClearBtn.addEventListener("click", function(){
+archivedTagClearBtn.addEventListener("dblclick", function(){
     console.log("Storage cleared.");
     localStorage.clear();
 });
@@ -179,7 +179,7 @@ const boxEl = document.getElementById("box");
 const boxBtn = document.getElementById("box-btn"); // L16
 const boxP = document.getElementById("box-p"); // L17
 
-boxBtn.innerHTML = "<p></p><button>BUY THIS BOX!</button>"; // L16
+boxBtn.innerHTML = "<p></p><button id='button2'>BUY THIS BOX!</button>"; // L16
 boxP.innerHTML = "<p>Limited time offer!</p>"; // L17
 
 // L6

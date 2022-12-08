@@ -76,9 +76,9 @@ button {
 /* BOX (DIV) STYLES. Tepper, 06DEC2022 */
 #box {
     cursor: pointer;
-    background: #7180AC;
+    background: #2B4570;
     padding: 40px;
-    width: 200px;
+    width: 250px;
     text-align: center;
     margin: 20px auto;
     color: #E49273;
@@ -89,7 +89,7 @@ button {
     cursor: pointer;
     background: #7180AC;
     padding: 40px;
-    width: 200px;
+    width: 250px;
     text-align: center;
     margin: 20px auto;
     color: #E49273;
@@ -100,7 +100,7 @@ button {
     cursor: pointer;
     background: #2B4570;
     padding: 40px;
-    width: 200px;
+    width: 250px;
     text-align: center;
     margin: 20px auto;
     color: #E49273;
