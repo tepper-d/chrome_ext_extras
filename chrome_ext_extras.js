@@ -192,11 +192,53 @@ boxBtn.addEventListener("click", function() {
 });
 
 
+// . . . P R A C T I C E   P A R T   T H R E E . . .
+/*
+LESSON 1. LET & CONST
+    a. Go through the variables and decide if they should be let or const
+    b. Change the console logs to use template strings instead of double quotes
+Tepper, 07DEC2022 */
+
+// CONSTANTS
+const player = "Snoop";
+const opponent = "Lily";
+const game = "Roll For Treats";
+
+// VARS
+let lilyPoints = 0;
+let snoopPoints = 0;
+let lilyNum = 0;
+let snoopNum = 0;
+let hasWon = false;
+
+// GAME
+const rollTwenty = () => {
+    return Math.floor(Math.random() * 20) + 1;
+}
+
+console.log(`pre-random: ${lilyNum}, ${snoopNum}`);
+lilyNum = rollTwenty();
+snoopNum = rollTwenty();
+console.log(`post-random: ${lilyNum}, ${snoopNum}`);
+
+
+// points =+ 100;
+// hasWon = true;
+
+// ANNOUNCING THE WINNER
+// if (hasWon) {
+//     console.log(player + " got " + points + " points and won the " + game + " game!");
+// }
+// else {
+//     console.log("The winner is " + opponent + "! " + player + " lost the game.");
+// }
+
+
+
 
 /* FOOTER. Tepper, 06NOV2022 *******************************************/
 const today = new Date();
 let footerEl = document.getElementById("footer-el");
-
 function footer() {
     // local variables
     let studentName = "tepper-d, ";
