@@ -22,6 +22,17 @@ body {
     min-width: 400px;
 }
 
+.coffee-img {
+    width: 100px;
+    border-radius: 30%;
+    margin: 10px;
+}
+
+#container {
+    width: 100%;
+}
+
+
 .extras {
     text-align: center;
     width: 500px;
@@ -142,5 +153,7 @@ COLORS:
     Paolo Veronese Green: 419D78
     Dark Salmon: E49273
     <bg> Queen Pink: EDD2E0
+
+
 */
 

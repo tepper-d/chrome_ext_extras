@@ -193,10 +193,13 @@ boxBtn.addEventListener("click", function() {
 
 
 // . . . P R A C T I C E   P A R T   T H R E E . . .
-/*
-LESSON 1. LET & CONST
+/* LESSON 1. LET & CONST
     a. Go through the variables and decide if they should be let or const
     b. Change the console logs to use template strings instead of double quotes
+LESSON 2. LOG ITEMS IN AN ARRAY
+    a. create a function that takes a single parameter, an array
+    b. log all the items of the array to the console
+    c. call the function while passing array as an argument
 Tepper, 07DEC2022 */
 
 // CONSTANTS
@@ -204,41 +207,223 @@ const player = "Snoop";
 const opponent = "Lily";
 const game = "Roll For Treats";
 
+
 // VARS
 let lilyPoints = 0;
 let snoopPoints = 0;
 let lilyNum = 0;
 let snoopNum = 0;
+let totalTreats = 0;
 let hasWon = false;
+
+// ARRAY. For Lesson 2. Stores nums that Snoop and Lily rolled
+let snoopRolledNums = [];
+let lilyRolledNums = [];
+
+let snoopRolls = localStorage.setItem("snoopRolls", JSON.stringify(snoopRolledNums));
+let lilyRolls = localStorage.setItem("lilyRolls", JSON.stringify(lilyRolledNums));
 
 // GAME
 const rollTwenty = () => {
     return Math.floor(Math.random() * 20) + 1;
 }
 
-console.log(`pre-random: ${lilyNum}, ${snoopNum}`);
-lilyNum = rollTwenty();
-snoopNum = rollTwenty();
-console.log(`post-random: ${lilyNum}, ${snoopNum}`);
+// VALIDATOR
+const rollCompare = (a, b) => {
+    if (a > b || a === b) {
+        hasWon = true;
+    }
+    else if (a < b) {
+        hasWon = false;
+    }
+}
+
+// ARRAY FORMATTER. For Lesson 2. Tepper, 07DEC2022
+const arrayFormatter = (arr) => {
+    let arrayPrint = "";
+
+    for (let i = 0; i < arr.length; i++) {
+        arrayPrint += arr[i] + ", ";
+    }
+
+    return arrayPrint;
+}
+
+// DOM - LESSON 1
+const treatsH = document.getElementById("treats-h");
+const treatsP = document.getElementById("treats-p");
+const treatsPP = document.getElementById("treats-p-p");
+const treatsPPP = document.getElementById("treats-p-p-p");
+const treatsBtn = document.getElementById("treats-btn");
+const treatsClearBtn = document.getElementById("treatsClear-btn");
+
+treatsH.innerHTML = `<h2>Roll for Treats</h2>`;
+treatsP.innerHTML = `Snoop vs. Lily<br>`;
+treatsPP.innerHTML = `High roller gets the treat. Doggywoo stars and celebrities, what will they roll? Will they roll low? Let's find out!<br>`;
+treatsBtn.innerHTML = `<br><button id='button2'>GIVE TREAT</button>`;
+treatsClearBtn.innerHTML = `<br><button id='button2'>RESET</button>`;
+treatsPPP.innerHTML = `<br>${player}: ${snoopPoints} | ${opponent}: ${lilyPoints}<br>Total Treats Dispensed: ${totalTreats}`;
+
+// give treats button
+treatsBtn.addEventListener("click", function(){
+    // running total of clicks
+    totalTreats++
+
+    // snoop and lily roll for treats
+    snoopNum = rollTwenty();
+    lilyNum = rollTwenty();
+
+    // Lesson 2. push snoop and lily's rolled nums into their respective arrays
+    snoopRolledNums.push(snoopNum);
+    lilyRolledNums.push(lilyNum);
+
+    // Lesson 3. save to localStorage
+    snoopRolls = localStorage.setItem("snoopRolls", JSON.stringify(snoopRolledNums));
+    lilyRolls = localStorage.setItem("lilyRolls", JSON.stringify(lilyRolledNums));
+
+    // rolls are compared to determine outcome
+    rollCompare(snoopNum, lilyNum);
+
+    if (hasWon) {
+        if (snoopNum > lilyNum){
+            snoopPoints++;
+            treatsP.innerHTML = `Snoop ${snoopNum} > Lily ${lilyNum}!<br>`;
+            treatsPP.innerHTML = `<br>${player} got more points than Lily and won this round of ${game}!<br>`;
+        }
+        else if (snoopNum === lilyNum) {
+            snoopPoints++;
+            lilyPoints++;
+            treatsP.innerHTML = `We have a tie!<br>`;
+            treatsPP.innerHTML = `<br><br>${player} and ${opponent} both rolled ${snoopNum}. So, they both get treats!<br>`;
+        }
+    }
+    else {
+        lilyPoints++;
+        treatsP.innerHTML = `Snoop ${snoopNum} < Lily ${lilyNum}!<br>`;
+        treatsPP.innerHTML = `<br><br>The winner is ${opponent}! Good try, ${player}.<br>`;
+    }
+    treatsPPP.innerHTML = `<br>${player}: ${snoopPoints} | ${opponent}: ${lilyPoints}<br>Total Treats Dispensed: ${totalTreats}`;
+
+});
+
+// reset game button
+treatsClearBtn.addEventListener("dblclick", function(){
+    lilyPoints = 0;
+    snoopPoints = 0;
+    lilyNum = 0;
+    snoopNum = 0;
+    totalTreats = 0;
+    hasWon = false;
+
+    treatsP.innerHTML = `Aaaaand we're going again!<br>`;
+    treatsPP.innerHTML = `Who will win this round?<br>`;
+    treatsPPP.innerHTML = `<br>${player}: ${snoopPoints} | ${opponent}: ${lilyPoints}<br>Total Treats Dispensed: ${totalTreats}`;
+    allRollsP1.innerHTML = `<br><h3>Snoop:</h3><br>`;
+    allRollsP2.innerHTML = `<br><br><h3>Lily:</h3><br>`;
 
 
-// points =+ 100;
-// hasWon = true;
+});
 
-// ANNOUNCING THE WINNER
-// if (hasWon) {
-//     console.log(player + " got " + points + " points and won the " + game + " game!");
-// }
-// else {
-//     console.log("The winner is " + opponent + "! " + player + " lost the game.");
-// }
+// LESSON 3
+// set item in local storage
+// console.log("added to local storage");
+// localStorage.setItem("snoop", "Snooper Dooper Party Pooper");
+
+// get item from local storage
+// console.log(localStorage.getItem("snoop"));
+
+/* LESSON 4. addEventListener AND OBJECT IN ARRAY
+    a. Fetch the button from the DOM, store it in a var
+    b. Use addEventListener() to listen for button clicks
+    c. Log items when the button is clicked
+Tepper, 10DEC2022 */
+let items = [
+    {
+        location: "river",
+        fish: "large-mouth bass",
+        price: 8
+    },
+    {
+        location: "ocean",
+        fish: "eel",
+        price: 15
+    }
+];
+
+// button stored in var
+const logBtn = document.getElementById("log-btn");
+
+/* LESSON 5. GENERATE SENTENCES
+    a. generateSentence(desc, arr) returns a string that grabs elements from 2 arrays
+    b. Use a for loop and template string
+Tepper, 10DEC2022 */
+
+const generateSentence = (desc, arr) => {
+    let baseString = `The ${arr.length} ${desc} are `;
+    const lastIndex = arr.length - 1;
+
+    for (let i = 0; i < arr.length; i++) {
+        if (i < lastIndex) {
+            baseString += arr[i] + ", ";
+        }
+        else {
+            baseString += arr[i];
+        } 
+    }
+    return baseString;
+}
+
+// var for lesson 5
+const sentence = generateSentence("fish in the ocean", ["sardine","anchovy"]);
 
 
+/* LESSON 6. RENDER IMAGES
+    a. create a loop function that renders 3 images
+    b. use for loop, template string
+    c. use innerHTML
+Tepper, 10DEC2022 */
+
+const container = document.getElementById("container");
+const imgs = [
+    "coffee1.jpg",
+    "coffee2.jpg",
+    "scooter.jpg"
+];
+
+const renderImages = () => {
+    let imgsDOM = "";
+    for (let i = 0; i < imgs.length; i++) {
+        imgsDOM += `<img class="coffee-img" src="${imgs[i]}">`
+    }
+    container.innerHTML = imgsDOM;
+}
+// button click event listener
+logBtn.addEventListener("click", function(){
+    console.log(items); // 4
+    console.log(sentence); // 5
+    renderImages();
+});
+
+/* LESSON 7. ROUNDING NUMBERS 
+    Round the price in the button down to 2 decimal places
+Tepper, 10DEC2022 */
+
+const pi = 3.141592653589793238462643383279502884197169399375105820974944592307816406286208;
+const piBtn = document.getElementById("pi-btn");
+piBtn.textContent = `pi = ${pi.toFixed(2)}`;
+
+
+// LESSON 8. CONVERT STRING TO NUMBER CHALLENGE
+const pi2 = "3.141592653589793238462643383279502884197169399375105820974944592307816406286208";
+const pi2Btn = document.getElementById("pi2-btn");
+
+let pi2Num = parseFloat(pi2);
+pi2Btn.textContent = `pi2 = ${pi2Num.toFixed(2)}`;
 
 
 /* FOOTER. Tepper, 06NOV2022 *******************************************/
 const today = new Date();
-let footerEl = document.getElementById("footer-el");
+const footerEl = document.getElementById("footer-el");
 function footer() {
     // local variables
     let studentName = "tepper-d, ";
