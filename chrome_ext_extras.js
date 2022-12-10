@@ -420,6 +420,94 @@ const pi2Btn = document.getElementById("pi2-btn");
 let pi2Num = parseFloat(pi2);
 pi2Btn.textContent = `pi2 = ${pi2Num.toFixed(2)}`;
 
+/* SOLO PROJECT: UNIT CONVERTER
+    1 meter = 3.281 feet
+    1 liter = 0.264 gallon
+    1 kilogram = 2.204 pound
+Tepper, 10DEC2022 */
+
+const msgEl = document.getElementById("msg-el");
+const lengthEl = document.getElementById("length-el");
+const volumeEl = document.getElementById("volume-el");
+const massEl = document.getElementById("mass-el");
+const convertBtn = document.getElementById("convert-btn");
+
+const ft = 3.281;
+const gal = 0.264;
+const lb = 2.204;
+
+// let userInput = document.getElementById("userInput").value;
+lengthEl.textContent = `meters = feet | feet = meters`;
+volumeEl.textContent = `liters = gallon | gallon = liters`;
+massEl.textContent = `kilograms = pounds | pounds = kilograms`;
+
+const toFt = (a) => {
+    let convertToFt = a * ft;
+    return convertToFt.toFixed(3);
+}
+
+const toGal = (a) => {
+    let convertToGal = a * gal;
+    return convertToGal.toFixed(3);
+}
+
+const toLb = (a) => {
+    let convertToLb = a * lb;
+    return convertToLb.toFixed(3);
+}
+
+const toM = (a) => {
+    let convertToM = a / ft;
+    return convertToM.toFixed(3);
+}
+
+const toL = (a) => {
+    let convertToL = a / gal;
+    return convertToL.toFixed(3);
+}
+
+const toKg = (a) => {
+    let convertToKg= a / lb;
+    return convertToKg.toFixed(3);
+}
+
+
+
+// convert btn event listener
+convertBtn.addEventListener ("click", function() {
+    let input = parseFloat(document.getElementById("userInput").value);
+
+    if (isNaN(input)) {
+        alert("Please enter a numeric value.");
+        userInput.value = "";
+        userInput.focus();
+    }
+    else {
+        lengthEl.textContent = `${input} meters = ${toFt(input)} feet | ${input} feet = ${toM(input)} meters`;
+        volumeEl.textContent = `${input} liters = ${toGal(input)} gallon | ${input} gallon = ${toL(input)} liters`;
+        massEl.textContent = `${input} kilograms = ${toLb(input)} pounds | ${input} pounds = ${toKg(input)} kilograms`;
+    }
+    userInput.focus();
+});
+
+// enter key event listener
+userInput.addEventListener ("keypress", function(event) {
+    let input = parseFloat(document.getElementById("userInput").value);
+
+    if (event.key === "Enter"){
+        if (isNaN(input)) {
+            alert("Please enter a numeric value.");
+            userInput.value = "";
+            userInput.focus();
+        }
+        else {
+            lengthEl.textContent = `${input} meters = ${toFt(input)} feet | ${input} feet = ${toM(input)} meters`;
+            volumeEl.textContent = `${input} liters = ${toGal(input)} gallon | ${input} gallon = ${toL(input)} liters`;
+            massEl.textContent = `${input} kilograms = ${toLb(input)} pounds | ${input} pounds = ${toKg(input)} kilograms`;
+        }
+    }
+    userInput.focus();
+});
 
 /* FOOTER. Tepper, 06NOV2022 *******************************************/
 const today = new Date();

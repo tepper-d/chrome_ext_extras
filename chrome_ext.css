@@ -55,7 +55,7 @@ button {
     font-weight: bold;
 }
 
-#button2 {
+#button2, #convert-btn {
     background: #7180AC;
     color: #E49273;
     padding: 10px 20px;
